@@ -1,0 +1,50 @@
+% Compressive Sensing
+% Optimization Problem
+%    minimize ||x||_1
+%        s.t. y = phi * x
+% where phi = [k,n] matrix with k << n
+%         x = [n,1] vector with S < n non-zero elements
+
+% Size of x
+size_n = 50;
+
+% Number of non-zero elements in x
+nz_S = 10;
+
+% Vector x with nz_S number of uniformly distributed values
+x = sprand(size_n, 1, (nz_S/size_n));
+opt_f = norm(x,1)
+
+% Set of selectable
+% Iteration counter
+itr = 0;
+
+% Set of selectable frequencies
+freq = (0 : size_n - 1);
+
+%Pick k using constraints
+size_k = size_n - nz_S;
+
+% Non uniformly distributed frequency choices
+freq_k = freq;
+freq_k(~mod(freq_k, (size_n/nz_S))) = [];
+
+% Form the DFT matrix
+phi = zeros( size_k, size_n);
+for index1 = 1 : size_k
+    for index2 = 1 : size_n
+        phi(index1, index2) = size_n ^(-0.5) * exp(-1i * 2 * pi * freq_k(index1) * ((index2 - 1)/size_n));
+    end
+end
+
+% Form the Sample Matrix
+y = phi * x;
+
+% Solve the system using CVX
+cvx_begin
+    variable cvx_x(size_n)
+    minimize(norm(cvx_x, 1))
+    subject to
+        phi * cvx_x == y
+cvx_end
+

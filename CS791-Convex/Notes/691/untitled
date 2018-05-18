@@ -1,0 +1,11 @@
+Spark
+both interative and interactive queries 
+share in mapreduce write to disk for next job
+spark holds in memory between iterations
+RDD divided into a number of partitions
+Spark has parallelizable oeprators
+higher-order functions taht execute user defined functions in parallel.
+Transformations: lazy operators that create new RDDs
+Actions: launch a computation and return a value to the program or write data to the external storage.
+Transformations: map, filter, reducebByKey, union, join, sort, groupByKey
+Actions: count, collect, reduce, lookup, save

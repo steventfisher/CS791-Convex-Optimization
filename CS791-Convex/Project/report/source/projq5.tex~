@@ -1,0 +1,35 @@
+\begin{prob}[5]
+  A cvx Experiment in Compressive Sensing: Consider the following problem
+  \begin{eqnarray*}
+    \mbox{minimize} & \vert \vert x \vert \vert_{1}\\
+    \mbox{subject to} & y = \Phi x
+  \end{eqnarray*}
+  where $\Phi$ is a $k \times n$ matrix with $k << n$, and $x$ is a vector
+  with only $S$ nonzero elements. The interpretation is that $y$ constitutes
+  our $k$ measurements of a sparse vector $x$, through a ``measuremnts
+  matrix'' $\Phi$. Since $\Phi$ is fat, there are infinitely many vectors
+  $x$ that satisfy the equality constraint in the problem, so we cannot
+  determine $x$ uniquely, only from that constraint. But if know that
+  $x$ is sparse (i.e., only $S$ nonzero elements of $n$), and if $k$ is
+  large enough (i.e., we have enough 'projections' of $x$), then the
+  optimization problem aboe can uniquely determine $x. Note that we
+  do not need to know the sparsity pattern (which elements of $x$ are
+  nonzero).
+
+  For the purposes of this problem, we will assume that $\Phi$ consists
+  of rows of a DFT matrix which has an element in the $l^{th}$ row and
+  $m^{th}$ column given by $\[ \Phi \]_{l,m} = n^{-1/2}\exp (-j 2 \pi f_{l} m / N)$,
+  where $f_{l} \in \{0,1,\ldots,n-1\}$ for $l = 1, \ldots, k$. The
+  interpretation is that $x$ is being ``snsed'' or ``sampled'' in $k$
+  different frequencies. Recall that $k < n$, so we have much fewer
+  frequency samples than the length of $x$, hence the name compressed
+  sampling or compressed sensing. An interesting result in conncetion
+  with the problem above is that if $k$ frequencies are chosedn randomly
+  and uniformly in the set $\{0,1,\ldots,n-1\}$, and the number of
+  frequency samples are at least
+  \[
+  k > CS \log n
+  \]
+  then the above optimization problem has a solution which will reconstruct
+  $x$ perfectly, with high probability.
+\end{prob}

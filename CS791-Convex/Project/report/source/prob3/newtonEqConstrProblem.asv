@@ -1,0 +1,84 @@
+% Newton's method with Equality Constraints
+% Optimization Problem
+%   minimize f(x) = Sum( x_i * log x_i ) for i = 1 to n
+%        s. t. Ax = b
+% where A = [pxn] matrix with p < n and full rank
+function [ ret_x, ret_itr, ret_rp, ret_rd, ret_stp ] = newtonEqConstrProblem( A, b, x, v)
+
+% Stopping Condition Limit
+epsilon = 0.00001;
+
+% Backtracking line search constants
+alpha = 0.1;
+beta = 0.7;
+
+% Size of the Coefficient Matrix
+size_n = 100;
+size_p = 30;
+
+% Gradient of objective function for x
+grad_f = 1 + log(x);
+
+% RHS of the KKT system
+r_dual = grad_f + (A' * v);
+r_primal = (A * x) - b;
+r = [r_dual ; r_primal];
+
+% A * x = b stop flag
+stop = 0;
+
+% Number of iterations
+itr = 0;
+
+% Hessian matrix definition
+Hessian_f = zeros( size_n, size_n );
+
+% Stopping conditions for Infeasible Start Newton Method
+while ( ~stop && norm(r) > epsilon)
+    
+    % Hessian of objective function for x
+    for index1 = 1 : size_n
+        for index2 : size_n
+            if index1 == index2
+                Hessian_f( index1, index2) = 1/ x( index1 );
+            else
+                Hessian_f( index1, index2) = 0;
+            end
+        end
+    end
+    
+    % Schur Complement
+    Schur_Cmpl = -A * ( Hessian_f \ A');
+    
+    % Primal and Dual Newton Search Directions
+    dual_n_search_dir = Schur_Cmp1 \ ( ( A * ( Hessian_f \ r_dual ) ) - r_primal );
+    prime_n_search_dir = Hessian_f \ ( ~ ( A' * dual_n_search_dir ) - r_dual );
+    
+    % Backtracking Line Search
+    t = 1;
+    track_x = x + t * prime_n_search_dir;
+    track_v = v + t * dual_n_search_dir;
+    
+    track_grad_f = 1 + log( track_x );
+    
+    track_r_dual = track_grad_f + A' * track_v;
+    track_r_primal = A * track_x - b;
+    
+    track_r = [ track_r_dual ; track_r_primal ];
+    track_r_min = r;
+    
+    while norm( track_r ) > ( 1 - alpha * t ) * norm( track_r_min )
+        t = beta * t;
+        track_x = x + t * prime_n_search_dir;
+        track_v = v + t * dual_n_search_dir;
+        
+        track_grad_f = 1 + log( track_x );
+        
+        track_r_dual  = track_grad_f + A' * track_v;
+        track_r_primal = A * track_x - b;
+        
+        track_r = [ track_r_dual ; track_r_primal ];
+        track_r_min = r;
+    end
+    
+    % Update new values for x a

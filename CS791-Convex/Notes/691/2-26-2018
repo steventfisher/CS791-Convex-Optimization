@@ -1,0 +1,94 @@
+Spark
+both interative and interactive queries 
+share in mapreduce write to disk for next job
+spark holds in memory between iterations
+RDD divided into a number of partitions
+Spark has parallelizable oeprators
+higher-order functions taht execute user defined functions in parallel.
+Transformations: lazy operators that create new RDDs
+Actions: launch a computation and return a value to the program or write data to the external storage.
+Transformations: map, filter, reducebByKey, union, join, sort, groupByKey
+Actions: count, collect, reduce, lookup, save
+SparkContext:
+Main entry point to Spark code
+
+When spark runs a function in parallel as a set of tasks on different nodes,
+it ships a copy of each variable used in the function to each task
+
+sometimes a variable needs to be shared across tasks, or
+between tasks and the driver program.
+
+no updates to the variables are propagated back to the driver program
+general read-write shared variables acorss tasks is inefficient.
+two types of shared variables: broadcast variables and accumulators
+broadcast variables: read only, cached on each machine
+not shipped to the nodes more than once.
+accumulators: used as counter or sums, they are only added.
+
+Execution Engine: Written in Scala; can use java and python as well
+Each RDD is represented as an object in Spark.
+
+Spark Programmin Interface
+-Spark application consists of a driver program that runs the user's main
+function and executes various parallel operations on a cluster.
+Executer may run multiple tasks
+
+Lineage
+-lineage: transformation used to build an RDD
+-RDDs are stored as a chain of objects caputirng the lineage of each RDD.
+
+RDD Dependencies: Narrow
+-Narrow: each partition of a parent RDD is used by at most one parition of the child RDD
+-Narrow dependencies allow pipelined execution on one cluster node:
+a map followed by a filter.
+
+Job Scheduling
+-user runs an action on an RDD: the scheduler builds a DAG(Directed Acyclic Graph)
+of stages from the RDD lineage graph
+-stage contains as many pipelined transformations with narrow dependencies.
+-boundary: shuffeles for wide dependencies or already computed partitions.
+-schduler launches tasks to copmute missing partiitons from each state until
+it computes the targe RDD
+-tasks are assigned to machines based on data locality.
+
+-RDD Fault Tolerance
+-RDD maintains lineage information that can be used to reconstruct lost
+partitions
+-Logging lineage rather than actual data
+-No replication
+-Recompute only the lost partitions of an RDD
+
+Job Schduling:
+-intermediate records of wide dependencies are materialized on the nodes
+holding the parent partitions: to simplify fault revocery
+-If a task fails, it will be re-ran on another node, as long as its stages
+parents are available
+-if some stages become unavailable, the tasks are submitted to compute
+
+-Recovery time-consuming for RDDs with long lineage chains and wide
+dependencies
+-Helpful to checkpoint some RDDs to stable storage.
+-Decision about which data to checkpoint is left to users.
+
+
+Memory Mangement
+-If there is not enough space in memory for a new computed RDD partition:
+a partition from the least recently used RDD is evicted.
+-Spark provides three options for storage of persisten RDDS:
+--in memory storage as deserialized java objects
+--in memory storage serialized java objects
+--on disk storage.
+-When an RDD is persisted, each node stores any partitions of the RDD 
+that it computes in memory
+-Persisting an RDD using persist() or cache() methods.
+-different storage lelvels: Memory only, m and disk, m only ser, 
+mem and disk ser, mem ony 2, mem adn disk 2, etc.
+
+RDD Applications:
+-Batch applications that apply the same operation to all elements of a 
+dataset
+-applications that make asynchronous fine-graned updates to shared
+state, e.g., storage system for a web application.
+
+
+

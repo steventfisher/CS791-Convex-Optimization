@@ -1,0 +1,32 @@
+\begin{prob}[4.1]
+  Consider the optimization problem
+  \begin{eqnarray*}
+    \mbox{minimize} & x^{2} + 1\\
+    \mbox{subject to} & (x-2)(x-4) \leq 0
+  \end{eqnarray*}
+
+  with variable $x \in \mathbf{R}$
+\end{prob}
+ \begin{enumerate}[label=(\alph*)]
+  \item{\textit{Analysis of primal problem.} Give the feasible set, the optimal value, and the optimal solution.
+    \begin{proof}[\sol]
+    \end{proof}    
+  }
+  \item{\textit{Lagrangian and dual function.} Plot the objective $x^{2} + 1$ versus $x$. On the same plog, show the feasible set, optimal point and value, and plot the Lagrangian $L(x, \lambda)$ versus $x$ for a few positive values of $\lambda$. Verify the lower bound property ($p^{*} \geq \inf_{x} L(x, \lambda)$ for $\lambda \geq 0$). Derive and sketch the Lagrange dual function $g$.
+    \begin{proof}[\sol]
+    \end{proof}
+  }
+   \item{\textit{Lagrange dual problem.} State the dual problem, and verify that it is a concave maximization problem. Find the dual optimal value and dual optimal solution $\lambda^{*}$. Does strong duality hold?
+     \begin{proof}[\sol] 
+    \end{proof}
+   }
+   \item{\textit{Sensitivity analysis.} Let $p^{*}(u)$ denote the optimal value of the problem
+       \begin{eqnarray*}
+    \mbox{minimize} & x^{2} + 1\\
+    \mbox{subject to} & (x-2)(x-4) \leq u
+       \end{eqnarray*}
+       as a function of the parameter $u$. Plot $p^{*}(u)$. Verify that $\dfrac{dp^{*}(0)}{du} = -\lambda^{*}$.
+     \begin{proof}[\sol]
+    \end{proof}
+   }
+  \end{enumerate}
