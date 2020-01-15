@@ -1,0 +1,18 @@
+\begin{prob}[2.1]
+  Show that $f(x) = e^{\alpha x^{T}Ax}$ is convex, where $A$ is a 
+  positive semidefinite symmetric $n \times n$ matrix and $\alpha$
+  is a positive scalar.
+\end{prob}
+\begin{proof}
+  Let $f(x) = e^{\alpha x^{T}Ax}$, where $A$ is a positive semidefinite symmetric
+  $n \times n$ matrix and $\alpha$ a positive scalar. We want to show that $f$
+  is convex.  First, we will note that, since $g(x) = \alpha x^{T}Ax$ is a quadratic, with a positive scalar and positive semidefinite symetric matrix, then it is convex.  Now, since $g$ is a convex function, then it suffice to show that $e^{g(x)}$ is convex.  We will use the Hessian:
+  \begin{eqnarray*}
+    \triangledown f(x) &=& e^{g(x)} \triangledown g(x)\\
+    \triangledown^{2} f(x) &=& e^{g(x)} \triangledown^{2} g(x) + e^{g(x)} \triangledown g(x) \triangledown g(x)^{T}\\
+    &=& e^{g(x)} (\triangledown^{2} g(x) + \triangledown g(x) \triangledown g(x)^{T})\\
+    &\succeq& 0
+  \end{eqnarray*}
+  Hence, $f(x) = e^{\alpha x^{T}Ax}$ is convex.
+  
+\end{proof}

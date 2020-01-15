@@ -1,0 +1,67 @@
+\begin{prob}[3.3]
+  The illumination problem. In lecture 1 we encountered the function
+  \[
+  f(p) = \max_{i = 1, \ldots, n} \vert \log a_{i}^{T} p - \log I_{des} \vert
+  \]
+  where $a_{i} \in \mathbf{R}^{m}$, and $I_{des} > 0$ are given, and
+  $p \in \mathbf{R}^{m}_{+}$.
+\end{prob}
+To simplify the notation, we assume that $I_{des} = $ (if not, we can simply redefine
+$a_{ij}$ as $a_{ij}/I_{des}$). We write $I_{i} = a^{T}_{i} p$( in the notation of page 1-6 of the
+lecture notes), so the objective function can be written as
+\[
+f(p) = \max_{i} \vert \log a^{T}_{i} p \vert
+\]
+The domain of $f$ is
+\[
+\{p \vert a_{i}^{T} > 0, i = 1, ldots, n\}
+\]
+ \begin{enumerate}[label=(\alph*)]
+  \item{Show that $\exp f$ is convex on $\left \{p \vert a_{i}^{T} p > 0, i = 1, \ldots, n \right \}$.
+    \begin{proof}
+      For simplicity, let us define $a_{ij} = a_{ij}/I_{des}$, next we will then
+      write $I_{i} = a^{T}_{i} p$(this is using the notation from our lecture notesw on 1-21). Then we can express our original objective
+      function as:
+\[
+f(p) = \max_{i} \vert \log a^{T}_{i} p \vert
+\]
+The domain of $f$ is
+\[
+\{p \vert a_{i}^{T} > 0, i = 1, ldots, n\}
+\]
+
+      \begin{eqnarray*}
+        \vert \log(a^{T}_{i} p)\vert &=& \max\{\log a^{T}_{i} p, \log(1/a^{T}_{i} p)\}\\
+        &=& \log \max \{ a^{T}_{i} p,1/a^{T}_{i} p\}
+      \end{eqnarray*}
+      Therefore we can write the objective function as
+      \[
+      f(p) = \log \max_{i} \max \{a^{T}_{i} p, 1/a^{T}_{i} p\}
+      \]
+      Now, we will note that both $a^{T}_{i} p$ and $1/a^{T}_{i} p$ are convex on \textbf{dom} $f$. Now, since these are convex and $\max$ maintains convexity.
+      Then, $\max_{i} \max \{a^{T}_{i} p, 1/a^{T}_{i} p\}$ is a convex function.
+      Thus $\exp f$ is convex.
+    \end{proof}
+    
+  }
+  \item{Show that the constraint 'no more than half of the total power is in
+    any 10 lamps' is convex (i.e. the set of vectors $p$ that satisfy the
+    constraint is convex).
+    \begin{proof}
+      This constraint can be expressed as
+      \[
+      \sum_{i = 1}^{l} p_{i} - 0.5 p_{max} \leq 0
+      \]
+      where $p_{i}$ is the \textit{i}th largest component of $p$, this is based on looking at our lecture notes from 1-22, where we let $p_{i} = p$ and vary $p$.
+    \end{proof}
+  }
+  \item{Show that the constraint 'no more than half of the lamps are on'
+    is (in general) not convex.
+    \begin{proof}
+      Suppose we have two solutions $p_{1}$ and $p_{2}$ that satisfy the
+      conditions of our problem. In the $p_{1}$, the first $m/2$ lamps are on
+      and the rest are off and in $p_{2}$ we have the opposite. If we consider
+      the number of nonzero components in $p_{1}$ and $p_{2}$, then any linear combination of these two  will have a totalof $m$. This would still be a solution, but would not satisfy our constraint of  'no more than half of the lamps are on'. Hence, would not be convex.
+    \end{proof}
+   }
+  \end{enumerate}

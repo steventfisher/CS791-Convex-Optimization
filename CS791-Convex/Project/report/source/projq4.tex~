@@ -1,6 +1,0 @@
-\begin{prob}[4]
-  Feasibility of an LP: Develop an algorithm to test the feasiblity of an
-  LP using the approach in (11.19) where $f_{i}(x)$ are affine functions
-  of $x$. Express the gradients and the Hessians needed for the algorithm
-  explicitly in your report and describe the algorithm.
-\end{prob}

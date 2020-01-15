@@ -1,0 +1,9 @@
+cvx_begin
+variables x1 x2;
+minimize(x1)
+subject to
+2 * x1 + y >= 1
+x + 3 * y >= 1
+x >= 0
+y >= 0
+cvx_end

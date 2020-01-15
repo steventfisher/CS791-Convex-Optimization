@@ -1,0 +1,42 @@
+\begin{prob}[2.4]Show the following:
+\end{prob}  
+  \begin{enumerate}[label=(\alph*)]
+  \item{If $f$ and $g$ are convex, both nondecreasing (or nonincreasing), and positive functions on an interval, then $fg$ convex.
+    \begin{proof}
+      Let $f$ and $g$ be convex, both nondecreasing (or nonincreasing), and positive functions on an interval. We want to show that $fg$ is convex. Now, since $f$ and $g$ are both positive and convex, then for $0 \leq \theta \leq 1$, we have:
+      \begin{eqnarray*}
+        f( \theta x + (1 - \theta)y)g(\theta x + (1- \theta)y) & \leq & (\theta f(x) + (1 - \theta)f(y))(\theta g(x) + (1 - \theta)g(y))\\
+        & = & \theta f(x)g(x) + (1 - \theta)f(y)(g(y)\\
+        && + \theta(1 \theta)(f(y) - f(x))(g(x) - g(y))
+      \end{eqnarray*}
+      Now, if both $f$ and $g$ are both nondecreasing or nonincreasing then $\theta(1 \theta)(f(y) - f(x))(g(x) - g(y)) \leq 0$.  Thus, we have that
+      \[
+      f(\theta x + (1 - \theta)y)g(\theta x + (1- \theta)y)  \leq \theta f(x)g(x) + (1 - \theta)f(y)g(y)
+      \]
+      Hence, $fg$ is convex.
+    \end{proof}}
+  \item{Suppose that $f: \mathbf{R^{n}} \rightarrow \mathbf{R}$ is nonnegative and convex, and $g: \mathbf{R^{n}} \rightarrow \mathbf{R}$ is positive and concave. Show that the function $\frac{f^{2}}{g}$, with domain $\mathbf{dom} \mbox{ }f \cap \mathbf{dom} \mbox{ }g$ is convex.
+    \begin{proof}
+      Given $f$, a nonegative and convex function, and $g$, a positive and concave function. We want to show that $\dfrac{f^{2}}{g}$ is convex.  With out loss of generality, let us assume that $n =1$. Let $x,y \in \mathbf{dom} \mbox{ } f \cap \mathbf{dom} \mbox{ } g$ and $\theta \in [0,1]$. Now since $f$ is convex, then we have
+      \[
+      f(\theta x + (1 - \theta)y) \leq \theta f(x) + (1 - \theta)f(y)
+      \]
+      Now, since $f$ is nonnegative. Then, so is $\theta f(x) + (1 - \theta)f(y)$ is nonnegative. Therefore, we have:
+      \[
+      f(\theta x + (1 - \theta)y)^{2} \leq (\theta f(x) + (1 - \theta)f(y))^{2}
+      \]
+      Similarly, since $g$ is concave then we have:
+      \[
+      g(\theta x + (1 - \theta)y) \geq \theta g(x) + (1 - \theta)g(y)
+      \]
+      Therefore, we have:
+      \[
+      \dfrac{f(\theta x + (1 - \theta)y)^{2}}{g(\theta x + (1 - \theta)y)} \leq \dfrac{(\theta f(x) + (1 - \theta)f(y))^{2}}{\theta g(x) + (1 - \theta)g(y)}
+      \]
+      Since, $g(\theta x + (1 - \theta)y) \geq 0$, then we have:
+      \[
+      \dfrac{f(\theta x + (1 - \theta)y)^{2}}{g(\theta x + (1 - \theta)y)} \leq \theta \dfrac{f(x)^{2}}{g(x)} + (1 - \theta)\dfrac{f(y)^{2}}{g(y)}
+      \]
+      Thus, $\dfrac{f^{2}}{g}$ is convex.
+    \end{proof}}    
+  \end{enumerate}

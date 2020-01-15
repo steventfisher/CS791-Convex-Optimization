@@ -1,0 +1,1 @@
+run \\files\users\stevenfisher\Downloads\cvx-w64\cvx\cvx_startup.m

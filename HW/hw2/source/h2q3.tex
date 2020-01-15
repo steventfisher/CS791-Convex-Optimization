@@ -1,0 +1,25 @@
+\begin{prob}[2.3]
+  Show that $f(x) = \dfrac{x^{T}x}{(\prod^{n}_{i=1} x_{i})^{\frac{1}{n}}}$ is convex $\mathbf{dom} \mbox{ }f = \mathbf{R^{n}_{++}}$\\
+\textbf{Hint: Perspective Composition Rule.} Suppose that $f: \mathbf{R^{n}} \rightarrow \mathbf{R}$ is a closed proper convex function satisfying $f(0) \leq 0$ and $g: \mathbf{R^{m}} \rightarrow \mathbf{R}$ be a closed proper concave function which is nonnegative on its effective domain, the function $h(x) = g(x) f(x/g(x))$ is convex with $\mathbf{dom} \mbox{ }h = \{ x \in \mathbf{dom} \mbox{ }g \vert x/g(x) \in \mathbf{dom} \mbox{ }f\}$.
+\end{prob}
+\begin{proof}
+  Let, $f(x) = x^{T}x$ and $g(x) = (\prod_{i=1}^{n} x_{i})^{1/n}$. We will first need to show that $g$ is concave. Now,
+  \[
+    \triangledown^{2} g(x) = -\dfrac{\prod_{i=1}^{n} x_{i}^{1/n}}{n^{2}}(n \mbox{ diag}^{2}(z) - zz^{T})\quad \mbox{where }(z_{i} = \dfrac{1}{x_{i}})
+  \]
+  now multiplying by a vector $v$ we get:
+  \begin{eqnarray*}
+    v^{T}\triangledown^{2} g(x)v &=& -\dfrac{\prod_{i=1}^{n} x_{i}^{1/n}}{n^{2}}\left(\sum_{i=1}^{n}1\sum_{i=1}^{n}v_{i}^{2}q_{i}^{2} - \left(\sum_{i=1}^{n}q_{i}v_{i}\right)^{2}\right)\\
+    & = & -\dfrac{\prod_{i=1}^{n} x_{i}^{1/n}}{n^{2}}(\Vert a \Vert_{2}^{2}\Vert b \Vert_{2}^{2} - \langle a,b\rangle^{2}) \leq 0
+  \end{eqnarray*}
+  where we have $a_{i} = 1$ and $b_{i} = q_{i}v_{i}$ $\forall v$.  Thus, $\triangledown^{2} g(x) \leq 0$.
+
+  Now, since $f$ is a closed proper convex function with $f(0) \leq 0$ and g is a concave funtion. Then by the definition of the Perspective Composition Rule, we have that:
+  \begin{eqnarray*}
+    h(x) &=& g(x)(f(x/g(x))\\
+    &=& (\prod_{i=1}^{n} x_{i})^{1/n}\left(\dfrac{x}{g(x)}\right)^{T}\dfrac{x}{g(x)}\\
+    &=& \dfrac{x^{T}x}{(\prod_{i=1}^{n} x_{i})^{1/n}}
+  \end{eqnarray*}
+  Thus, $h$ is convex.
+  
+\end{proof}

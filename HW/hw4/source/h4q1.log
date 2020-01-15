@@ -1,0 +1,98 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdfmex 2017.1.31)  18 APR 2018 13:33
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./h4q1.tex
+(./h4q1.tex
+This is MeX  Version 1.05  18 XII 1993  (B. Jackowski & M. Ry\'cko)
+! Undefined control sequence.
+l.1 \begin
+          {prob}[4.1]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.3   \begin
+            {eqnarray*}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.4     \mbox
+             {minimize} & x^{2} + 1\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+l.4     \mbox{minimize} &
+                          x^{2} + 1\\
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   ^
+l.4     \mbox{minimize} & x^
+                            {2} + 1\\
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Runaway argument?
+ \mbox {subject to} & (x-2)(x-4) \leq 0 \end {eqnarray*} 
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+l.7 
+    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.7 
+    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Undefined control sequence.
+l.8   with variable $x \in \mathbf
+                                  {R}$
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[1{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] ){c:/texlive/
+2016/texmf-dist/fonts/enc/dvips/pl/plms.enc}{c:/texlive/2016/texmf-dist/fonts/e
+nc/dvips/pl/plmi.enc}{c:/texlive/2016/texmf-dist/fonts/enc/dvips/pl/plrm.enc}<c
+:/texlive/2016/texmf-dist/fonts/type1/public/pl/plmi10.pfb><c:/texlive/2016/tex
+mf-dist/fonts/type1/public/pl/plr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1
+/public/pl/plr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy10.pf
+b>
+Output written on h4q1.pdf (1 page, 17132 bytes).
+PDF statistics:
+ 27 PDF objects out of 1000 (max. 8388607)
+ 19 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

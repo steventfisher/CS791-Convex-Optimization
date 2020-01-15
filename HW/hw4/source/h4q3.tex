@@ -1,0 +1,39 @@
+\begin{prob}[4.3]
+  Find the dual function of the LP
+      \begin{eqnarray*}
+      \mbox{minimize} & c^{T} x\\
+      \mbox{subject to} & Gx \preccurlyeq h, Ax = b
+      \end{eqnarray*}
+      Give the dual problem, and make the implicit equality constraints explicit.
+    \begin{proof}[\sol]
+      In order to obtain the dual problem, we first must find the Lagrangian.
+      Using the definition we have
+      \begin{eqnarray*}
+        L(x,\lambda,\mu) & =  c^{T}x + \lambda^{T}(Gx - h) + \mu^{T}(Ax - b)\
+        & =  (c^{T} + \lambda^{T}G + \mu^{T}A)x - h\lambda^{T} - \mu^{T}b
+      \end{eqnarray*}
+
+      Now, that we know what the Lagrangian is, we need the dual function
+      \[
+      g(\lambda,\mu) = \inf_{x} L(x,\lambda,\mu) =
+      \begin{cases}
+          -\lambda^{T} h -\mu^{T}b & c + G^{T}\lambda + A^{T}\mu = 0\\
+          -\infty & \mbox{otherwise}
+      \end{cases}
+      \]
+
+      Now, that we have the dual function then our dual problem is
+      \begin{eqnarray*}
+        \mbox{maximize} & g(\lambda, \mu)\\
+        \mbox{subject to} & \lambda \succcurlyeq 0
+      \end{eqnarray*}
+
+      The last thing that we need, is to make the implicit constraints explicit.
+      So, our dual problem is:
+      \begin{eqnarray*}
+        \mbox{maximize} & -\lambda^{T}h - \mu^{T}b\\
+        \mbox{subject to} & c + G^{T} \lambda + A^{T}\mu = 0\\
+        & \lambda \succcurlyeq 0
+        \end{eqnarray*}
+    \end{proof} 
+\end{prob}

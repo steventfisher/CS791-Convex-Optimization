@@ -1,0 +1,6 @@
+\begin{prob}[2.2]
+  Show that $f(x,t) = -\log (t^{2} - x^{T}x)$ with $\mathbf{dom} f = \{(x,t) \in \mathbf{R^{n}} \times \mathbf{R} \vert t > \Vert x \Vert_{2}\}$ is convex. Hint: you can use composition rules here and use convexity of the quadractic over linear function.
+\end{prob}
+\begin{proof}
+  In order to show that $f(x,t) = -\log (t^{2} - x^{T}x)$ is convex, we will utilize composition rules and the convexity of the quadractic over linear function.  First, we need to note that given the following $(\frac{1}{t})y^{T}y$ is the quadratic over linear function, which is convex on the $\mathbf{dom} \mbox{ } f$.  Therefore, we have $t - (\frac{1}{t})y^{T}y$ is concave, because we have a convex function being subtracted from a linear function.  Now, utilizing the composition rules, we know that since $h = t - (\frac{1}{t})y^{T}y$ is concave then since $g(y) = -\log{y}$ is convex and decreasing, we have that $g \circ h$ is convex. Thus, in our case we have $-\log(t - (\frac{1}{t})y^{T}y)$ is convex on our $\mathbf{dom} \mbox{ } f$.  Thus, we can now $f(x, t) = -\log(t - (\frac{1}{t})x^{T}x) - \log t = -\log(t^{2} - x^{T}x)$. Hence, our function is convex, since it is the sum of two convex functions.
+\end{proof}

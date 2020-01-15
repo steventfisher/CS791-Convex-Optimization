@@ -1,0 +1,45 @@
+\begin{prob}[4.4]
+  The relative entropy between two vectors $x, y \in \mathbf{R}^{n}_{++}$ is defined as $\sum^{n}_{k=1} x_{k} \log(x_{k}/y_{k})$. This is a convex function, jointly in $x$ and $y$. In the following problem we calculate the vector $x$ that minimizes the relative entropy with a given vector $y$, subject to equality contraints on $x$:
+      \begin{eqnarray*}
+      \mbox{minimize} & \sum_{k=1}^{n} x_{k} \log(x_{k}/y_{k})\\
+      \mbox{subject to} & Ax = b, 1^{T} x = 1
+      \end{eqnarray*}
+      The optimization variable is $x \in \mathbf{R}^{n}$. The domain of the objective function is $\mathbf{R}^{n}_{++}$. The parameters $y \in \mathbf{R}^{n}_{++}$, $A \in \mathbf{R}^{m \times n}$, and $b \in \mathbf{R}^{m}$ are given. Derive the Lagrange dual of this problem and simplity it to get
+      \[
+      \mbox{maximize } b^{T} z - \log \sum_{k=1}^{n} y_{k} e^{a^{T}_{k} z}
+      \]
+      ($a_{k}$ is the kth column of $A$).
+\end{prob}
+\begin{proof}[\sol]
+  We will begin by deriving the Lagrange dual function, which is given by:
+  \[
+  L(x,z,\mu) = \sum_{k}^{n}x_{k}\log(\frac{x_{k}}{y_{k}}) + b^{T}z - z^{T} A x + \mu - \mu 1^{T} x
+  \]
+  Now, if we minimized with respect to $x_{k}$ we get:
+  \[
+  1 + \log(\frac{x_{k}}{y_{k}}) - a^{T}_{k} z - \mu \qquad k = 1, \ldots,n
+  \]
+  Solving the above for $x_{k}$ we get:
+  \begin{eqnarray*}
+    1 + \log(\frac{x_{k}}{y_{k}}) - a^{T}_{k} z - \mu &=& 0\\
+    \Rightarrow \log(\frac{x_{k}}{y_{k}}) &=& a^{T}_{k} + \mu - 1\\
+    \Rightarrow \frac{x_{k}}{y_{k}} &=& e^{a^{T}_{k} + \mu - 1}\\
+    \Rightarrow x_{k} &=& y_{k} e^{a^{T}_{k} + \mu - 1}\\
+  \end{eqnarray*}
+  Now that we have the value for $x_{k}$, we will substitute it back into $L$:
+  \begin{eqnarray*}
+    \sum_{k}^{n}x_{k}\log(\frac{x_{k}}{y_{k}}) + b^{T}z - z^{T} A x + \mu - \mu 1^{T} x &=& \sum_{k}^{n} y_{k} e^{a^{T}_{k} + \mu - 1}\log(\frac{ y_{k} e^{a^{T}_{k} + \mu - 1}}{y_{k}}) + b^{T}z - z^{T} A x + \mu - \mu 1^{T} x\\ 
+    &=& \sum_{k}^{n} y_{k} e^{a^{T}_{k} + \mu - 1}\log(e^{a^{T}_{k} + \mu - 1}) + b^{T}z - z^{T} A x + \mu - \mu 1^{T} x\\
+    &=& \sum_{k}^{n} y_{k} e^{a^{T}_{k} + \mu - 1} a^{T}_{k} + \mu - 1 + b^{T}z - z^{T} A x + \mu - \mu 1^{T} x\\
+    &=& \sum_{k}^{n} y_{k} e^{a^{T}_{k} + \mu - 1} a^{T}_{k} + \mu - 1 + b^{T}z - z^{T} A x + \mu - \mu 1^{T} x\\ 
+  \end{eqnarray*}
+  Simplifying we get:
+  \[
+  g(z,\mu) = b^{T}z + \mu - \sum_{k}^{n}y_{k}^{a^{t}_{k} + \mu - 1}
+  \] 
+  Now, simplifying with respect to $\mu$, we get:
+  \[
+  g(z,\mu) = b^{T} z - \log \sum_{k=1}^{n} y_{k} e^{a^{T}_{k} z}
+  \]
+\end{proof}
+
